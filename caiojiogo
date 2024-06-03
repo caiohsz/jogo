@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class JogoDeTiro {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        
+        int alvo = 0; // Posição do alvo
+        int jogador = 0; // Posição do jogador
+        int pontuacao = 0; // Pontuação do jogador
+        
+        while (true) {
+            System.out.println("Pressione 'a' para atirar");
+            String input = scanner.nextLine();
+            
+            if (input.equals("a")) {
+                // Verificar se o jogador acertou o alvo
+                if (jogador == alvo) {
+                    System.out.println("Acertou!");
+                    pontuacao++;
+                } else {
+                    System.out.println("Errou!");
+                }
+                
+                // Gerar nova posição para o alvo
+                alvo = random.nextInt(10);
+                
+                // Mostrar posição do alvo e pontuação do jogador
+                System.out.println("Posição do alvo: " + alvo);
+                System.out.println("Pontuação: " + pontuacao);
+            }
+            
+            // Movimento do jogador
+            jogador = (jogador + 1) % 10; // O jogador se move automaticamente
+        }
+    }
+}
